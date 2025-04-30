@@ -1,0 +1,54 @@
+<!-- @if(disabled()){
+<div class="spinner-container">
+  <mat-progress-spinner
+    mode="indeterminate"
+    diameter="50"
+  ></mat-progress-spinner>
+</div>
+} @if(idea()){
+<div>
+  <h2>{{ idea()?.title }}</h2>
+  <p>{{ idea()?.description }}</p>
+  <p>{{ idea()?.votes }}</p>
+
+  <button mat-button routerLink="/">Back to Table</button>
+  <button mat-button type="button" (click)="upvote()" [disabled]="disabled()">
+    Upvote
+  </button>
+</div>
+
+} -->
+
+<!-- Spinner -->
+@if (disabled()) {
+<div class="spinner-container">
+  <mat-progress-spinner
+    mode="indeterminate"
+    diameter="50"
+  ></mat-progress-spinner>
+</div>
+} @if (idea()) {
+<mat-card class="idea-card">
+  <mat-card-header>
+    <mat-card-title>Title: {{ idea()?.title }}</mat-card-title>
+    <mat-card-title>Description: {{ idea()?.description }}</mat-card-title>
+  </mat-card-header>
+
+  <mat-card-content>
+    <p>Votes: {{ idea()?.votes }}</p>
+  </mat-card-content>
+
+  <mat-card-actions align="end">
+    <button mat-button routerLink="/">Back to Table</button>
+    <button
+      mat-flat-button
+      color="primary"
+      type="button"
+      (click)="upvote()"
+      [disabled]="disabled()"
+    >
+      Upvote
+    </button>
+  </mat-card-actions>
+</mat-card>
+}
